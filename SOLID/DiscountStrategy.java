@@ -1,4 +1,4 @@
-
+// Utilizes the open/close principle
 interface DiscountStrategy {
     double calculate();
 }
