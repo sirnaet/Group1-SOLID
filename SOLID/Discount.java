@@ -1,4 +1,4 @@
-
+// Violates the open/close principle
 public class Discount {
     public double calculate(String type) {
         if (type.equals("regular")) return 10;
