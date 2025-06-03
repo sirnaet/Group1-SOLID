@@ -7,53 +7,49 @@ import java.util.List;
 public class SingleResponsibilityAdherence {
     public static void main(String[] args) {
         var theGuess = 0;
-        var theMagicNumber = 7; // This is the fixed number to guess
+        var theMagicNumber = 7;
         var count = 0;
 
-        // While loop that terminates when the correct guess is made
-        while (theGuess != -1) {
+
             while (theGuess != theMagicNumber) {
+                count++;
                 String input = JOptionPane.showInputDialog("What is your guess?");
                 try {
-                    theGuess = Integer.parseInt(input); // Convert the input into an integer
+                    theGuess = Integer.parseInt(input);
                 } catch (NumberFormatException e) {
                     System.exit(0); // Exit if non-numeric input
                 }
 
-                if (theGuess == -1) System.exit(0);
+                if (theGuess == -1)
+                    System.exit(0);
 
                 if (theGuess < theMagicNumber) {
                     JOptionPane.showMessageDialog(null, theGuess + " is too low!");
                 } else if (theGuess > theMagicNumber) {
                     JOptionPane.showMessageDialog(null, theGuess + " is too high!");
-                } else {
+                } else if (theGuess == theMagicNumber)
                     JOptionPane.showMessageDialog(null, theMagicNumber + " is correct!");
                 }
 
-                count++;
-            }
-
-            new GameResult(count, theMagicNumber);
-            // Object calling the method for printing history found in the GameResult class - PRINTS ALL GAME RESULTS
+            new gameResult(count, theMagicNumber);
             GameHistory.printResults();
-
             // Reset for new round
-            theGuess = 0;
-            count = 0;
-        }
+            theGuess=0;
+            count=0;
     }
-}
+    }
 
 // Created a new class that allows for history to be taken down for each specific guess made and adds to a list called results
 class GameHistory {
     static List<gameResult> results = new ArrayList<gameResult>();
 
     static void printResults() {
-        System.out.println("\n\nGuesses:");
+        System.out.println("\n\nGuesses\t Number:");
         System.out.println("---------------");
         for (gameResult gameResult : results) {
-            System.out.println(gameResult + " " + gameResult.magicNumber);
+            System.out.println(gameResult.guesses+ "\t " + gameResult.magicNumber);
         }
+        System.out.println("---------------");
     }
 }
 
@@ -67,3 +63,6 @@ class gameResult {
         GameHistory.results.add(this);
     }
 }
+
+//This game adheres to the Single Responsibility Rule because each class performs each function: GameHistory for to display the history and gameResult to store result.
+//The history for all previous gameplays are still stored in the history.
