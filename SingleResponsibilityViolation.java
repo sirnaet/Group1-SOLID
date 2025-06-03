@@ -64,5 +64,5 @@ class GameResult {
 }
 
 //The game above violates SRP because the GameResult Class should not store the history but only focus on handling the results instead.
-    //The game history should not be associated with only one gameplay that is shown by the output(despite multiple guesses, it displays the number of guesses)
-    //If one would wish to change the magic number, they would have to make the change twice.
+//The game history should not be associated with only one gameplay/result
+//If one would wish to change the magic number, they would have to make the change twice.
