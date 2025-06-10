@@ -16,3 +16,5 @@ public class MainforLadhesion {
         bird.flyx(); // This will also call the method from Bird
     }
 }
+// This adheres to the Liskov Substitution Principle (LSP) because Sparrow can be used wherever Bird is expected without altering the expected behavior.
+// The Sparrow class inherits the flyx method from the Bird class, and it does not override it, thus maintaining the expected behavior of the Bird class.
